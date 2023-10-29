@@ -1,0 +1,39 @@
+<h1>{{title}}</h1>
+<form (submit)="addTask($event,name.value,des.value)">
+  <input type="text" placeholder="Enter New Task" #name required>
+  <br>
+  <br>
+  <input type="text" placeholder="Enter Description" #des required>
+  <br>
+  <br>
+  <button type="submit">ADD</button>
+</form>
+
+<div id="parent">
+  <div *ngFor="let item of data">
+    <div id="child">
+      <h4>{{item.id}}</h4>
+      <h3>{{item.title}}</h3>
+      <h3>{{item.description}}</h3>
+      <button (click)="updateTask(item.id)" 
+        [style.background-color]="item.completed ? 'green' : 'red'"
+        [style.margin-right.px]="10"
+        [style.border]="'none'"
+        [style.padding.px]="10"
+        [style.margin-bottom.px]="15"
+        [style.cursor]="'pointer'"
+        [style.color]="'white'"
+        [style.font-weight]="'bold'">
+        {{ item.completed ? 'Completed' : 'Pending' }}
+      </button>
+      <button (click)="removeTask(item.id)"
+        [style.background-color]="'black'"
+        [style.border]="'none'"
+        [style.padding.px]="10"
+        [style.margin-bottom.px]="15"
+        [style.cursor]="'pointer'"
+        [style.color]="'white'"
+        [style.font-weight]="'bold'">Delete Task</button>
+    </div>
+  </div>
+</div>
